@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatApp Home</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #1A1A2E, #16213E, #0F3460);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .feature-item {
+            text-align: center;
+        }
+        .cta button {
+            background-color: #1E1E2F;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .cta button:hover {
+            background-color: #3A3A4D;
+        }
+        .testimonials blockquote {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-left: 5px solid #0F3460;
+            margin: 10px 0;
+        }
+        .testimonials footer {
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+        .made-by {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to ChatApp</h1>
+        <p>Connect with friends and family instantly.</p>
+
+        <div class="cta">
+            <button onclick="window.location.href='/chat/'">Text Chat</button>
+            <button onclick="window.location.href='/video/'">Video Call</button>
+        </div>
+    </div>
+
+    <div class="made-by">
+        Made by Cactus
+    </div>
+</body>
+</html>
