@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Chat</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #1A1A2E, #16213E, #0F3460);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .chat-container {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .messages {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #0F3460;
+            border-radius: 5px;
+            background-color: #1f4068;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            position: relative;
+            max-width: 80%;
+        }
+        .message.other {
+            background-color: #0f3460;
+            align-self: flex-start;
+        }
+        .message.self {
+            background-color: #2979ff;
+            align-self: flex-end;
+            color: #fff;
+        }
+        .message .sender {
+            font-weight: bold;
+        }
+        .message .text {
+            margin-top: 5px;
+        }
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #1E1E2F;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #3A3A4D;
+        }
+        .made-by {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h2>Real-time Chat</h2>
+        <div class="messages" id="messages"></div>
+        <div class="input-container">
+            <input type="text" id="nameInput" placeholder="Your Name" />
+            <input type="text" id="messageInput" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <div class="made-by">
+        Made by Cactus
+    </div>
+    <script>
+        const roomName = 'group_chat';
+        const chatSocket = new WebSocket(
+            'ws://' + window.location.host + '/ws/' + roomName + '/'
+        );
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'other');
+            const senderElement = document.createElement('div');
+            senderElement.classList.add('sender');
+            senderElement.textContent = data.username;
+            const textElement = document.createElement('div');
+            textElement.classList.add('text');
+            textElement.textContent = data.message;
+            messageElement.appendChild(senderElement);
+            messageElement.appendChild(textElement);
+            document.getElementById('messages').appendChild(messageElement);
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        function sendMessage() {
+            const nameInput = document.getElementById('nameInput');
+            const messageInput = document.getElementById('messageInput');
+            const messagesContainer = document.getElementById('messages');
+
+            const name = nameInput.value.trim();
+            const message = messageInput.value.trim();
+
+            if (name && message) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', 'self');
+                const senderElement = document.createElement('div');
+                senderElement.classList.add('sender');
+                senderElement.textContent = name;
+                const textElement = document.createElement('div');
+                textElement.classList.add('text');
+                textElement.textContent = message;
+                messageElement.appendChild(senderElement);
+                messageElement.appendChild(textElement);
+                messagesContainer.appendChild(messageElement);
+
+                chatSocket.send(JSON.stringify({
+                    'username': name,
+                    'message': message,
+                    'time': new Date().toLocaleTimeString()
+                }));
+                messageInput.value = '';
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            } else {
+                alert("Please enter both your name and message.");
+            }
+        }
+    </script>
+</body>
+</html>

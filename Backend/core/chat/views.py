@@ -1,12 +1,12 @@
-from django.shortcuts import render
-from .models import Chat
-
-# Create your views here.
+from django.shortcuts import render, redirect
+from django.http import JsonResponse
 
 
-def chat_view(request):
-    massages = Chat.objects.all()
-    return render(request, 'chat/chat.html', {'massages': massages})
+def chat(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        return redirect("login-user")
+    context = {}
+    return render(request, "chat/chatPage.html", context)
 
 
 def home_view(request):
