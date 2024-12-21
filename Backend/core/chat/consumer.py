@@ -1,8 +1,8 @@
-from channels.generic.websocket import AsyncWebSocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 
 
-class ChatClient(AsyncWebSocketConsumer):
+class ChatClient(AsyncWebsocketConsumer):
     async def connect(self):
         self.roomGroupName = 'group_chat'
         await self.channel_layer.group_add(

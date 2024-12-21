@@ -36,8 +36,8 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "daphne",
     "django.contrib.staticfiles",
-    'rest_framework',
     'chat',
     'channels',
 
@@ -127,15 +127,12 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-ASGI_APPLICATION = 'core.asgi.application'
+ASGI_APPLICATION = 'core.asgi.application' 
 
-
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
-    }
+CHANNEL_LAYERS = { 
+    'default': { 'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
 }
-
 
 LOGIN_REDIRECT_URL = "chat"
 LOGOUT_REDIRECT_URL = "login-user"
