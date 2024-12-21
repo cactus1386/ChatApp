@@ -6,7 +6,7 @@ def chat(request, *args, **kwargs):
     if not request.user.is_authenticated:
         return redirect("login-user")
     context = {}
-    return render(request, "chat/chatPage.html", context)
+    return render(request, "chat/chat.html", context)
 
 
 def home_view(request):
