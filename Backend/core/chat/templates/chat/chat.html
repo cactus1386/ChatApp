@@ -184,10 +184,10 @@
         };
 
         document.querySelector("#id_message_send_button").onclick = () => {
-            const messageInput = document.querySelector("#id_message_send_input").value;
+            const messageInput = document.querySelector("#id_message_send_input").value.trim();
             const currentTime = new Date().toLocaleTimeString();
 
-            if (messageInput.trim() !== "") {
+            if (messageInput) {
                 chatSocket.send(JSON.stringify({
                     message: messageInput,
                     username: "{{ request.user.username }}",
@@ -205,7 +205,7 @@
             div.className = data.username === "{{ request.user.username }}" ? "chat-message right" : "chat-message left";
 
             div.innerHTML = `
-                <span class="message-username">${data.username}</span>
+                <span class="message-username">${data.username.charAt(0).toUpperCase() + data.username.slice(1)}</span>
                 <span>${data.message}</span>
                 <span class="message-timestamp">${data.time}</span>
             `;
