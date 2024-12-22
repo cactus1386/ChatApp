@@ -7,25 +7,24 @@
     <title>Login</title>
     <style>
         body {
-            background: linear-gradient(to right, #1A1A2E, #16213E, #0F3460);
-            color: white;
-            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #1E1E2F, #282A36, #121212);
+            color: #E0E0E0;
+            font-family: 'Roboto', sans-serif;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            text-align: center;
         }
 
         .login-container {
             max-width: 400px;
-            width: 100%;
+            width: 90%;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            background: #1E1E2F;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+            text-align: center;
         }
 
         .login-header {
@@ -33,41 +32,48 @@
         }
 
         .login-header h1 {
-            font-size: 24px;
+            font-size: 2rem;
+            color: #BB86FC;
             margin: 0;
         }
 
         .login-form {
             display: flex;
             flex-direction: column;
+            gap: 15px;
         }
 
         .login-form label {
-            margin-bottom: 5px;
             text-align: left;
+            font-size: 1rem;
+            color: #A6C0D4;
         }
 
         .login-form input {
             padding: 10px;
-            margin-bottom: 10px;
             border: none;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 1rem;
+            background: #282A36;
+            color: #E0E0E0;
+            outline: none;
         }
 
         .login-form button {
-            padding: 10px;
-            background-color: #0f4c75;
+            padding: 12px;
+            background: linear-gradient(to right, #6A0572, #0D6B99);
             color: white;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .login-form button:hover {
-            background-color: #3282b8;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(109, 107, 200, 0.5);
         }
 
         .made-by {
@@ -75,7 +81,7 @@
             bottom: 10px;
             left: 10px;
             font-size: 0.8rem;
-            color: #ccc;
+            color: #999;
         }
     </style>
 </head>
@@ -96,7 +102,7 @@
     </div>
 
     <div class="made-by">
-        Made by Cactus
+        Created by Cactus
     </div>
 </body>
 

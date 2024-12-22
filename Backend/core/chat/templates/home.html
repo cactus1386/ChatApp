@@ -1,68 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChatApp Home</title>
     <style>
         body {
-            background: linear-gradient(to right, #1A1A2E, #16213E, #0F3460);
-            color: white;
-            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #1E1E2F, #282A36, #121212);
+            color: #E0E0E0;
+            font-family: 'Roboto', sans-serif;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             text-align: center;
         }
+
         .container {
             max-width: 600px;
-            width: 100%;
+            width: 90%;
             padding: 20px;
+            border-radius: 15px;
+            background: #1E1E2F;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
         }
-        .features {
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #BB86FC;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #A6C0D4;
+        }
+
+        .cta {
             display: flex;
-            justify-content: space-around;
-            margin: 20px 0;
+            justify-content: center;
+            gap: 15px;
         }
-        .feature-item {
-            text-align: center;
-        }
+
         .cta button {
-            background-color: #1E1E2F;
+            background: linear-gradient(to right, #6A0572, #0D6B99);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 25px;
             padding: 15px 30px;
-            font-size: 1.2rem;
-            margin: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
+
         .cta button:hover {
-            background-color: #3A3A4D;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(109, 107, 200, 0.5);
         }
-        .testimonials blockquote {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-left: 5px solid #0F3460;
-            margin: 10px 0;
-        }
-        .testimonials footer {
-            font-size: 0.8rem;
-            color: #ccc;
-        }
+
         .made-by {
             position: absolute;
             bottom: 10px;
             left: 10px;
             font-size: 0.8rem;
-            color: #ccc;
+            color: #999;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Welcome to ChatApp</h1>
@@ -75,7 +84,8 @@
     </div>
 
     <div class="made-by">
-        Made by Cactus
+        Created by Cactus
     </div>
 </body>
+
 </html>

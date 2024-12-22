@@ -19,7 +19,7 @@ class ChatClient(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
-        massage = text_data_json['massage']
+        massage = text_data_json['message']
         username = text_data_json['username']
         time = text_data_json['time']
         await self.channel_layer.group_send(
