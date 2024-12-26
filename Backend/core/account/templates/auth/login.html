@@ -76,6 +76,20 @@
             box-shadow: 0 5px 15px rgba(109, 107, 200, 0.5);
         }
 
+        .register-link {
+            margin-top: 20px;
+        }
+
+        .register-link a {
+            color: #BB86FC;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-link a:hover {
+            color: #03DAC6;
+        }
+
         .made-by {
             position: absolute;
             bottom: 10px;
@@ -99,6 +113,9 @@
             <input type="password" id="password" name="password" required>
             <button type="submit">Login</button>
         </form>
+        <div class="register-link">
+            <a href="{% url 'register' %}">Don't have an account? Register</a>
+        </div>
     </div>
 
     <div class="made-by">

@@ -11,7 +11,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Login successful!')
-            return redirect('home')  # Replace 'home' with your desired redirect URL
+            return redirect('chat')
         else:
             messages.error(request, 'Invalid credentials.')
     return render(request, 'auth/login.html')

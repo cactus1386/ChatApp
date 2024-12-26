@@ -4,7 +4,7 @@ from django.http import JsonResponse
 
 def chat(request, *args, **kwargs):
     if not request.user.is_authenticated:
-        return redirect("login-user")
+        return redirect("login")
     context = {}
     return render(request, "chat/chat.html", context)
 
