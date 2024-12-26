@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'chat',
     'channels',
-
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -136,4 +136,5 @@ CHANNEL_LAYERS = {
 }
 
 LOGIN_REDIRECT_URL = "chat"
-LOGOUT_REDIRECT_URL = "login-user"
+LOGOUT_REDIRECT_URL = "login"
+
